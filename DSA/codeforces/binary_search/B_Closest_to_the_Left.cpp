@@ -1,27 +1,4 @@
-
-/*
-
-4 3 5
-60 45 80 60
-30 60 75
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include<bits/stdc++.h>
-//#include<ext/pb_ds/assoc_container.hpp>
-//using namespace __gnu_pbds;
 using namespace std;
 #define ll 				long long int
 #define ld				long double
@@ -42,8 +19,8 @@ using namespace std;
 #define mp 				map
 #define pq_max          priority_queue<ll>
 #define pq_min          priority_queue<ll,vi,greater<ll> >
-// #define ff 				first
-// #define ss 				second
+#define ff 				first
+#define ss 				second
 #define all(x) x.begin(), x.end()
 #define sortall(x) sort(all(x))
 #define mid(l,r)        (l+(r-l)/2)
@@ -56,8 +33,6 @@ vs tokenizer(string str,char ch) {std::istringstream var((str)); vs v; string t;
 
 // Overload for deb when no arguments are provided
 void deb() {}
-
-// Regular deb macro with variadic template
 #define deb(...) logger(#__VA_ARGS__, __VA_ARGS__)
 template<typename ...Args>
 void logger(string vars, Args&&... values) {
@@ -74,7 +49,6 @@ void err(istream_iterator<string> it, T a, Args... args) {
     cout << *it << " = " << a << endl;
     err(++it, args...);
 }
-
 //typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 
 void file_i_o()
@@ -88,17 +62,35 @@ void file_i_o()
     #endif
 }
 
-int main(int argc, char const *argv[]) {
-    file_i_o();
-    ll n;
-    cin >> n;
-    vector<ll> arr(n);
-    loop(i,0,n-1){
-        cin >> arr[i];
+void check(int L,int R, int target,vector<int> &array){
+    int mid;
+    int ans = 0;
+    while(L <= R){
+        mid = L + (R - L)/2;
+        if(array[mid] <= target){
+            L = mid + 1;
+            ans = mid + 1;
+        }else{
+            R = mid - 1;
+        }
     }
-    sort(all(arr));
-    logarr(arr,0,n-1);
-    return 0;
+    cout << ans << endl;
 }
 
 
+int main(int argc, char const *argv[]){
+    // file_i_o();
+    int n,k;
+    cin >> n >> k;
+    vector<int> array(n);
+    for(int i=0;i<n;i++){
+        cin >> array[i];
+    }
+    for(int i=0;i<k;i++){
+        int x;
+        cin >> x;
+        int l = 0, r = n-1;
+        check(l,r,x,array);
+    }
+    return 0;
+}
