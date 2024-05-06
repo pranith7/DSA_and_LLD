@@ -22,24 +22,19 @@ void merge(vector<int> &arr, int l, int mid, int r)
             f++ ;
         }
 
-        // if elements on the left half are still left //
-
         if (i > mid) {
-             while (j <= r) {
+             while (j <= r) { // if elements on the left half are still left //
                 temp[f] = arr[j]  ;
                 f++ ; j++ ;
             }
-        }
-        else {
-            //  if elements on the right half are still left //
-            while (i <= mid) {
+        }else {           
+            while (i <= mid) { //  if elements on the right half are still left //
                 temp[f] = arr[i]  ;
                 f++ ; i++ ;
             }
         }
-
-        // transfering all elements from temporary to arr //
-        for (int f = l ; f <= r; f++) {
+          
+        for (int f = l ; f <= r; f++) { // transfering all elements from temporary to arr //
             arr[f] = temp[f] ;
         }
     }
