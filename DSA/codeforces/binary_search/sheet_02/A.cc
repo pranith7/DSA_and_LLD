@@ -75,14 +75,14 @@ bool check(ll mid, ll w, ll h, ll n){
             If we need to Accomodate that Area in Square we
             need Area of Square >= n * (w*h) --> x^2 = n * (w*h) --> (x/w)*(x/h) >= n 
     */
-    return (mid/w)*(mid/h) >= n;
+    return (long long unsigned)(mid/w)*(long long unsigned)(mid/h) >= (long long unsigned)n;
 }
 
 int main(int argc, char const *argv[]) {
     file_i_o();
-    ll w, h, n;
+    long long unsigned w, h, n;
     cin >> w >> h >> n;
-    ll lo = 1, hi = 1e9, ans = -1;
+    long long unsigned lo = 1, hi = 1e18, ans = -1;
     while(lo <= hi){
         ll mid = lo + (hi - lo)/2;
         if(check(mid,w,h,n)){
